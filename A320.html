@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تعویض چرخ Airbus 320</title>
+<style>
+body { font-family: Tahoma, sans-serif; margin: 0; padding: 20px; background: #f9f9f9; }
+.container { max-width: 700px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px #ccc; }
+h1 { text-align: center; }
+video { width: 100%; border-radius: 10px; margin-bottom: 20px; }
+button { padding: 10px 20px; margin: 10px 5px; font-size: 16px; }
+#steps { font-size: 18px; min-height: 100px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>تعویض چرخ Airbus 320</h1>
+
+  <!-- ویدیو آموزشی -->
+  <video src="../videos/main_video.mp4" controls></video>
+
+  <!-- دکمه‌ها -->
+  <div style="text-align:center;">
+    <button onclick="prevStep()">◀ قبلی</button>
+    <button onclick="nextStep()">بعدی ▶</button>
+  </div>
+
+  <div id="steps"></div>
+
+  <!-- چک‌لیست نهایی -->
+  <div id="checklist" style="display:none;">
+    <h3>چک‌لیست نهایی:</h3>
+    <label><input type="checkbox"> آیا چرخ به درستی نصب شده است؟</label><br>
+    <label><input type="checkbox"> آیا فشار باد چرخ بررسی شده است؟</label><br>
+    <label><input type="checkbox"> آیا ابزارها جمع‌آوری شده‌اند؟</label><br>
+  </div>
+</div>
+
+<script>
+const steps = [
+  "مرحله ۱: ترمز هواپیما را فعال کنید.",
+  "مرحله ۲: ابزارهای مورد نیاز را آماده کنید.",
+  "مرحله ۳: مهره‌های چرخ را باز کنید.",
+  "مرحله ۴: چرخ قدیمی را جدا کنید.",
+  "مرحله ۵: چرخ جدید را در محل قرار دهید.",
+  "مرحله ۶: مهره‌ها را سفت کنید.",
+  "مرحله ۷: فشار باد چرخ را بررسی کنید.",
+  "مرحله ۸: سیستم ترمز را چک کنید.",
+  "مرحله ۹: هواپیما را پایین بیاورید.",
+  "مرحله ۱۰: تست نهایی را انجام دهید."
+];
+
+let current = 0;
+const stepDiv = document.getElementById('steps');
+const checklist = document.getElementById('checklist');
+
+function updateStep() {
+  if (current < steps.length) {
+    stepDiv.textContent = steps[current];
+  } else {
+    stepDiv.style.display = "none";
+    checklist.style.display = "block";
+  }
+}
+
+function nextStep() {
+  if (current < steps.length) current++;
+  updateStep();
+}
+
+function prevStep() {
+  if (current > 0) current--;
+  updateStep();
+}
+
+updateStep();
+</script>
+
+</body>
+</html>
